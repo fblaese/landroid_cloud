@@ -101,6 +101,15 @@ class WorxDevice(LandroidCloudBase, StateVacuumEntity):
         except NoOneTimeScheduleError as ex:
             _LOGGER.error("(%s) %s", self._name, ex.args[0])
 
+    async def async_safehome(self, service_call: ServiceCall = None):
+        """Start safe homing (no blades)."""
+        device: WorxCloud = self.api.device
+        _LOGGER.debug("Starting safe homing for %s", self._name)
+        try:
+            await self.hass.async_add_executor_job(partial(device._mqtt.publish, device.mqtt_in, '{"cmd":9}', qos=0, retain=False))
+        except NoOneTimeScheduleError as ex:
+            _LOGGER.error("(%s) %s", self._name, ex.args[0])
+
     async def async_restart(self, service_call: ServiceCall = None):
         """Restart mower baseboard OS."""
         device: WorxCloud = self.api.device

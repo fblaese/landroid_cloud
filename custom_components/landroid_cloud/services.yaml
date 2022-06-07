@@ -19,6 +19,13 @@ edgecut:
       integration: landroid_cloud
       domain: vacuum
 
+safehome:
+  description: Start safe homing (if supported)
+  target:
+    entity:
+      integration: landroid_cloud
+      domain: vacuum
+
 partymode:
   description: Toggle PartyMode (if supported)
   target:

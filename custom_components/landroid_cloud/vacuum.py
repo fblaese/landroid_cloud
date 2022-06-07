@@ -18,6 +18,7 @@ from .const import (
     SERVICE_OTS,
     SERVICE_PARTYMODE,
     SERVICE_RESTART,
+    SERVICE_SAFEHOME,
     SERVICE_SCHEDULE,
     SERVICE_SETZONE,
 )
@@ -81,6 +82,11 @@ async def async_setup_entry(
             SERVICE_OTS,
             WORX_OTS,
             constructor.async_ots,
+        )
+        platform.async_register_entity_service(
+            SERVICE_SAFEHOME,
+            {},
+            constructor.async_safehome,
         )
     elif vendor == "kress":
         constructor = KressDevice

@@ -41,6 +41,7 @@ SERVICE_RESTART = "restart"
 SERVICE_EDGECUT = "edgecut"
 SERVICE_OTS = "ots"
 SERVICE_SCHEDULE = "schedule"
+SERVICE_SAFEHOME = "safehome"
 
 # Extra states
 STATE_INITIALIZING = "initializing"
